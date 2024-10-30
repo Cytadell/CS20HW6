@@ -1,0 +1,51 @@
+[
+        {
+            "name": "Red Orange",
+            "price": 3.10,
+            "description": "Includes one pound (1 lb) of Red Oranges picked fresh from O'Kerry's Orange Farm.",
+            "categories": ["Fruit", "Food"]
+        },
+        {
+            "name": "Chicken Thighs",
+            "price": 2.90,
+            "description": "1 pound of free-Ranged Chicken Thighs, GMO free",
+            "categories": ["Meat", "Food"]
+        },
+        {
+            "name": "Cast Iron Pan",
+            "price": 25.23,
+            "description": "12-inch Cast Iron Pan that contains and spreads heat out evenly.",
+            "categories": ["Kitchen Supplies", "Non-Food"]
+        },
+        {
+            "name": "Granny Smith Apples",
+            "price": 3.23,
+            "description": "Includes one pound (1 lb) of Granny Smith Apples picked fresh from Ms.Smith's Garden by Granny Smith herself.",
+            "categories": ["Fruit", "Food"]
+        },
+        {
+            "name": "Baby Carrots",
+            "price": 5.23,
+            "description": "Includes a 3 pound (3 lb) bag of Organic Carrots",
+            "categories": ["Vegetables", "Food"]
+        },
+        {
+            "name": "Garlic Powder",
+            "price": 6.15,
+            "description": "12 oz of long-lasting McNot-MCCormick Garlic Powder",
+            "categories": ["Spice", "Non-Food"]
+        },
+        {
+            "name": "Rib-eye Steak",
+            "price": 25.40,
+            "description": "2lb of free-Ranged Rib-eye Steak from Japan",
+            "categories": ["Meat", "Food"]
+        },
+        {
+            "name": "Whole Wheel of Parmesan",
+            "price": 993.99,
+            "description": "72lb Wheel of Parmigiano from the Parma and Reggio Emilio provinces in Italy.",
+            "categories": ["Dairy", "Food"]
+        }
+    ]
+    

@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .product {
+            border: 1px solid #e1e1e1;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+            background-color: #f3f3f3;
+        }
+        .product h2 {
+            margin: 0;
+            font-size: 1.5em;
+            color: #2c3e50;
+        }
+        .product p {
+            margin: 5px 0;
+            color: #555;
+        }
+        .product .price {
+            font-weight: bold;
+            color: #e74c3c;
+        }
+        .filter-section {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Products List</h1>
+        <div class="filter-section">
+            <select id="category-select" style="width: 200px;"></select>
+            <button id="filter-button">Filter</button>
+            <button id="reset-button">Reset Filter</button>
+        </div>
+        <div id="products"></div>
+    </div>
+
+    <script type="text/javascript">
+        var categories = new Set();
+        $.get('products.json', function(products) {
+            let productHtml = '';
+            products.forEach(product => {
+                productHtml += `
+                    <div class="product">
+                        <h2>${product.name}</h2>
+                        <p class="description">${product.description}</p>
+                        <p class="price">$${product.price.toFixed(2)}</p>
+                        <p class="categories">Categories: ${product.categories.join(', ')}</p>
+                    </div>
+                `;
+                product.categories.forEach(category => {
+                    categories.add(category);
+                });
+            });
+            document.getElementById('products').innerHTML = productHtml;
+
+            categories.forEach(category => $('#category-select').append(`<option value="${category}">${category}</option>`));
+        });
+        $('#filter-button').on('click', function() {
+            $.get('products.json', function(products) {
+                let productHtml = '';
+                products.forEach(product => {
+                    if(product.categories.includes($('#category-select').val())){
+                        productHtml += `
+                            <div class="product">
+                                <h2>${product.name}</h2>
+                                <p class="description">${product.description}</p>
+                                <p class="price">$${product.price.toFixed(2)}</p>
+                                <p class="categories">Categories: ${product.categories.join(', ')}</p>
+                            </div>
+                        `;
+                    }
+                }); 
+                document.getElementById('products').innerHTML = productHtml;
+            });   
+        });
+        $('#reset-button').on('click', function() {
+            $.get('products.json', function(products) {
+                let productHtml = '';
+                products.forEach(product => {
+                    productHtml += `
+                        <div class="product">
+                            <h2>${product.name}</h2>
+                            <p class="description">${product.description}</p>
+                            <p class="price">$${product.price.toFixed(2)}</p>
+                            <p class="categories">Categories: ${product.categories.join(', ')}</p>
+                        </div>
+                    `;
+                }); 
+                document.getElementById('products').innerHTML = productHtml;
+            });   
+        });
+    </script>            
+</body>
+</html>
